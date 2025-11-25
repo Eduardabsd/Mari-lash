@@ -1,85 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Agenda — Givara</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site de Agendamentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <h1>Givara</h1>
-      <p class="subtitle">Agenda e Controle</p>
-    </div>
-    <nav>
-      <button id="btn-agenda" class="nav-btn active">Agenda</button>
-      <button id="btn-finance" class="nav-btn">Financeiro</button>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#agendamentos">Agendamentos</a></li>
+                <li><a href="#financas">Finanças</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="container">
-    <!-- AGENDA -->
-    <section id="agenda-section" class="panel">
-      <div class="top-controls">
-        <label for="year-select">Ano:</label>
-        <select id="year-select"></select>
+    <main>
+        <section id="home">
+            <h1>Bem-vindo ao Meu Site</h1>
+            <p>Gerencie seus agendamentos e finanças de forma elegante.</p>
+        </section>
 
-        <label for="month-select">Mês:</label>
-        <select id="month-select"></select>
-      </div>
+        <section id="about">
+            <h2>Sobre Mim</h2>
+            <p>Texto sobre você aqui.</p>
+        </section>
 
-      <div id="calendar" class="calendar"></div>
+        <section id="agendamentos">
+            <h2>Agendamentos</h2>
+            <div id="calendar-container">
+                <div id="calendar-header">
+                    <button id="prev-year">◀</button>
+                    <span id="current-year">2027</span>
+                    <button id="next-year">▶</button>
+                </div>
+                <div id="calendar"></div>
+            </div>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3>Agendar para <span id="selected-date"></span></h3>
+                    <label for="time">Horário:</label>
+                    <input type="time" id="time" required>
+                    <label for="procedure">Procedimento:</label>
+                    <input type="text" id="procedure" placeholder="Digite o procedimento" required>
+                    <label for="client-name">Nome da Cliente:</label>
+                    <input type="text" id="client-name" placeholder="Nome da cliente" required>
+                    <label for="value">Valor Cobrado (R$):</label>
+                    <input type="number" id="value" step="0.01" placeholder="0.00" required>
+                    <button id="save-appointment">Salvar</button>
+                </div>
+            </div>
+        </section>
 
-      <div class="legend">
-        <span class="dot booked"></span><small>Com agendamento</small>
-      </div>
-    </section>
+        <section id="financas">
+            <h2>Finanças</h2>
+            <div id="finance-container">
+                <h3 id="selected-month">Janeiro 2027</h3>
+                <p id="total-value">Total: R$ 0.00</p>
+                <ul id="month-list">
+                    <!-- Meses serão gerados dinamicamente -->
+                </ul>
+            </div>
+        </section>
 
-    <!-- FINANCEIRO -->
-    <section id="finance-section" class="panel hidden">
-      <h2 id="finance-title">Selecione um mês</h2>
+        <section id="contact">
+            <h2>Contato</h2>
+            <p>Informações de contato aqui.</p>
+        </section>
+    </main>
 
-      <div id="finance-amount" class="finance-amount">R$ 0,00</div>
+    <footer>
+        <p>&copy; 2023 Meu Site. Todos os direitos reservados.</p>
+    </footer>
 
-      <div class="months-list" id="months-list"></div>
-    </section>
-  </main>
-
-  <!-- Modal form -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <button id="modal-close" class="modal-close">✕</button>
-      <h3 id="modal-date-title">Agendar</h3>
-
-      <form id="appointment-form">
-        <label>Data</label>
-        <input type="text" id="ap-date" readonly />
-
-        <label>Horário</label>
-        <input type="time" id="ap-time" required />
-
-        <label>Modelo (campo livre)</label>
-        <input type="text" id="ap-model" placeholder="Ex: Volume, Fio a fio..." required />
-
-        <label>Nome da cliente</label>
-        <input type="text" id="ap-name" placeholder="Nome" required />
-
-        <label>Valor (R$)</label>
-        <input type="number" id="ap-value" placeholder="Ex: 120.00" step="0.01" required />
-
-        <div class="modal-actions">
-          <button type="submit" class="btn-primary">Salvar</button>
-          <button type="button" id="delete-appointment" class="btn-danger hidden">Excluir</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
